@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ishita Chaturvedi | Portfolio</title>
+  <style>
+    :root {
+      --accent: #c49a6c;
+      --overlay-light: rgba(255,255,255,0.6);
+      --overlay-dark: rgba(0,0,0,0.6);
+      --text: #333;
+      --text-inv: #fff;
+      --card-light: rgba(255,255,255,0.7);
+      --card-dark: rgba(40,40,40,0.75);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: linear-gradient(var(--overlay-light), var(--overlay-light)),
+        url("cloud.jpg") no-repeat center center fixed;
+      background-size: cover;
+      transition: color .3s ease, background-color .3s ease;
+    }
+
+    body.dark {
+      color: var(--text-inv);
+      background: linear-gradient(var(--overlay-dark), var(--overlay-dark)),
+        url("cloud.jpg") no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--accent);
+      margin: 0 0 10px;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+
+    header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 28px;
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.45);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      z-index: 1000;
+    }
+
+    body.dark header {
+      background: rgba(20,20,20,0.45);
+      border-bottom-color: rgba(255,255,255,0.08);
+    }
+
+    .brand { font-weight: 700; letter-spacing:.5px; color: var(--accent); }
+
+    nav a {
+      margin: 0 12px;
+      font-weight: 600;
+      position: relative;
+    }
+
+    nav a::after {
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-4px;
+      height:2px;
+      width:0;
+      background: var(--accent);
+      transition: width .25s;
+    }
+    nav a:hover::after { width:100%; }
+
+    .toggle {
+      border:0;
+      padding:8px 14px;
+      border-radius:10px;
+      cursor:pointer;
+      background: var(--accent);
+      color:#fff;
+      font-weight:700;
+    }
+
+    main { padding-top: 80px; }
+    section { padding: 32px 18px; }
+    .container { max-width: 980px; margin: 0 auto; }
+
+    .card {
+      background: var(--card-light);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.18);
+      padding: 28px;
+      backdrop-filter: blur(6px);
+      transition: transform .25s ease, box-shadow .25s ease, background .3s ease;
+    }
+
+    .card + .card { margin-top: 28px; }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,.22); }
+    body.dark .card { background: var(--card-dark); }
+
+    ul { list-style:none; padding:0; margin: 10px 0 0; }
+    ul li { margin: 6px 0; }
+    ul li::before { content:"▸ "; color: var(--accent); font-weight:700; }
+
+    .hero {
+      text-align:center;
+      padding: 90px 18px 50px;
+    }
+    .hero p { max-width: 780px; margin: 10px auto 0; font-size: 1.05rem; }
+
+    footer {
+      text-align:center;
+      padding:22px 12px;
+      margin: 40px 0 20px;
+      background: rgba(255,255,255,0.45);
+      backdrop-filter: blur(6px);
+    }
+    body.dark footer { background: rgba(20,20,20,0.45); }
+
+    @media (max-width: 720px){
+      nav { display:none; }
+      .toggle { margin-left:auto; }
+      .card { padding:22px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">Ishita</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#hobbies">Hobbies</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="toggle" id="toggleBtn">Dark Mode</button>
+  </header>
+
+  <main>
+    <!-- Greeting Section -->
+    <section id="about" class="hero">
+      <div class="container">
+        <div class="card">
+          <h1 id="greeting">Hi, I’m Ishita Chaturvedi</h1>
+          <p>
+            First-year B.Tech CSE student at JIIT. I enjoy building clean web UIs with HTML & CSS
+            and I love the creative side of tech, apart from that dance, sketching, and reading novels fuel my ideas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="card">
+          <h2>Education</h2>
+          <ul>
+            <li><strong>JIIT (Current):</strong> B.Tech in CSE, 1st Year</li>
+            <li><strong>Sri Venkateshwar International School, Delhi:</strong> Class 11–12 (PCM with Economics)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="card">
+          <h2>Technical Skills</h2>
+          <ul id="skillsList"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="hobbies">
+      <div class="container">
+        <div class="card">
+          <h2>Hobbies & Interests</h2>
+          <ul>
+            <li>Dance</li>
+            <li>Painting</li>
+            <li>Reading Novels</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="card">
+          <h2>Projects</h2>
+          <p id="projectStatus">Personal projects are in progress. Exploring different fields rn.</p>
+          <button id="updateProjectBtn" class="toggle">Update Status</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="card" id="contactCard">
+          <h2>Contact</h2>
+          <p>Email: <a href="mailto:anayishita2006@gmail.com">anayishita2006@gmail.com</a></p>
+          <p>Phone: 6261655346</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2025 Ishita Chaturvedi</footer>
+
+  <script>
+    // ===== Variables and Data Types =====
+    const toggleBtn = document.getElementById('toggleBtn');
+    const greeting = document.getElementById('greeting');
+    const skillsList = document.getElementById('skillsList');
+    const updateProjectBtn = document.getElementById('updateProjectBtn');
+    const projectStatus = document.getElementById('projectStatus');
+    const contactCard = document.getElementById('contactCard');
+
+    let darkMode = false;
+    let skills = ["HTML", "CSS", "C Programming"];
+    let currentStatus = 0;
+
+    // ===== Functions =====
+    function setGreeting() {
+      const hour = new Date().getHours();
+      if (hour < 12) {
+        greeting.textContent = "Good Morning! I'm Ishita Chaturvedi";
+      } else if (hour < 18) {
+        greeting.textContent = "Good Afternoon! I'm Ishita Chaturvedi";
+      } else {
+        greeting.textContent = "Good Evening! I'm Ishita Chaturvedi";
+      }
+    }
+
+    function renderSkills() {
+      skillsList.innerHTML = ""; 
+      skills.forEach(skill => {
+        const li = document.createElement('li');
+        li.textContent = skill;
+        skillsList.appendChild(li);
+      });
+    }
+
+    // ===== Events =====
+    toggleBtn.onclick = function() {
+      document.body.classList.toggle('dark');
+      darkMode = !darkMode;
+      toggleBtn.textContent = darkMode ? "Light Mode" : "Dark Mode";
+    };
+
+    updateProjectBtn.onclick = function() {
+      const messages = [
+        "Personal projects are in progress. Exploring different fields rn.",
+        "Currently working on a cool Web Development project!",
+,
+        "Next up: Learning backend with Node.js!"
+      ];
+      currentStatus = (currentStatus + 1) % messages.length;
+      projectStatus.textContent = messages[currentStatus];
+    };
+
+    contactCard.onmouseover = function() {
+      contactCard.style.transform = "scale(1.05)";
+      contactCard.style.transition = "transform 0.3s ease";
+    };
+
+    contactCard.onmouseout = function() {
+      contactCard.style.transform = "scale(1)";
+    };
+
+    // ===== Initial Calls =====
+    setGreeting();
+    renderSkills();
+  </script>
+</body>
+</html>
